@@ -177,7 +177,7 @@ $index = 0
 $ImagesIndex = (Get-WindowsImage -ImagePath $ScratchDisk\tiny11\sources\install.wim).ImageIndex
 while ($ImagesIndex -notcontains [int]$index) {
     Get-WindowsImage -ImagePath $ScratchDisk\tiny11\sources\install.wim
-    $index = Read-Host "Please enter the image index (Make sure it is Windows 11 Pro if needed)"
+    $index = Read-Host "Please enter the image index"
 }
 $index = [int]$index
 
