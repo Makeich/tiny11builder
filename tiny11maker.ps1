@@ -295,8 +295,10 @@ $langPacks = & dism /English /Image:"$ScratchDisk\scratchdir" /Get-Packages |
     ForEach-Object { $matches[1] }
 
 foreach ($lp in $langPacks) {
-    if ($lp -notmatch 'en-US' -and $lp -notmatch 'ru-RU') {
-        Write-Output "Removing language pack: $lp"
+    if ($lp -like '*en-US*' -or $lp -like '*ru-RU*') {
+        Write-Output "Keeping language packs: $lp"
+    } else {
+        Write-Output "Removing language packs: $lp"
         & dism /English /Image:"$ScratchDisk\scratchdir" /Remove-Package /PackageName:"$lp" | Out-Null
     }
 }
